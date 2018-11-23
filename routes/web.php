@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('validate_form', 'HomeController@validateForm')->name('validate_form');

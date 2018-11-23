@@ -45,7 +45,7 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 50px;
             }
 
             .links > a {
@@ -65,33 +65,19 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Laravel Test TinCorrect
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <form action="{{ route('validate_form') }}" method="POST">
+                    {{ csrf_field() }}
+                    <label for="tin">Tin</label>
+                    <input type="text" name="tin" placeholder="TIN..." style="padding-left: 5px;" required maxlength="20">
+
+                    <button type="submit">Submit</button>
+
+                </form>
             </div>
         </div>
     </body>
