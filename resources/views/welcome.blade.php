@@ -72,8 +72,20 @@
 
                 <form action="{{ route('validate_form') }}" method="POST">
                     {{ csrf_field() }}
+                    {{--Name--}}
+                    <label for="tin">First Name</label>
+                    <input type="text" name="firstname" placeholder="First Name" style="padding-left: 5px;" required>
+                    {{--Last Name--}}
+                    <label for="tin">Last Name</label>
+                    <input type="text" name="lastname" placeholder="Last Name" style="padding-left: 5px;" required maxlength="20">
+                    {{--TIN--}}
                     <label for="tin">Tin</label>
                     <input type="text" name="tin" placeholder="TIN..." style="padding-left: 5px;" required maxlength="20">
+                    @if(isset($error_description))
+                        <div class="has-error" style="color:red">
+                            {{ $error_description }}
+                        </div>
+                    @endif
 
                     <button type="submit">Submit</button>
 
