@@ -143,7 +143,14 @@ class TincorrectApi
         }
 
         if(isset($response_body->ModelState)) {
-            $error += ['error_description' => $response_body->ModelState->{"tinRequest.Tin"}[0]];
+
+            if(isset($response_body->ModelState->{"tinRequest.Tin"})) {
+                $error += ['error_description' => $response_body->ModelState->{"tinRequest.Tin"}[0]];
+            }else {
+                $state = (array) $response_body->ModelState;
+                $error += ['error_description' => reset($state)[0]];
+            }
+
         }
 
         throw new TincorrectException(
