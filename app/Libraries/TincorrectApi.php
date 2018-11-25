@@ -124,7 +124,6 @@ class TincorrectApi
         $error = [
             'status' => 'error',
             'method' => $method,
-            'error_description' => 'Unknown error'
         ];
 
         /* Login Error msg*/
@@ -152,6 +151,8 @@ class TincorrectApi
             }
 
         }
+
+        $error += ['error_description' => 'Unknown error'];
 
         throw new TincorrectException(
             "[{$e->getCode()}] {$e->getMessage()}",
